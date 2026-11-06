@@ -38,7 +38,7 @@ html,body{height:100%;overflow:hidden}
 /* diagram */
 .scroll{}
 .diagram{position:relative;padding:34px 14px !important;background:#fff;border-radius:14px;padding:18px 14px;margin-top:8px;box-shadow:0 1px 0 rgba(46,58,75,.04)}
-.grid{position:relative;z-index:2;display:grid;grid-template-columns:184px 34px 184px 30px 252px 32px 164px 78px 160px 28px 164px;grid-template-rows:repeat(4,72px);row-gap:16px;align-items:center}
+.grid{position:relative;z-index:2;display:grid;grid-template-columns:184px 34px 184px 30px 240px 32px 164px 78px 160px 28px 176px;grid-template-rows:repeat(4,72px);row-gap:16px;align-items:center}
 svg.wires{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:visible}
 .esc{grid-column:1;grid-row:1/5;align-self:stretch;background:var(--purple-f);border:2px solid var(--purple);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;justify-content:center;gap:6px}
 .esc .top{display:flex;align-items:center;gap:8px}
@@ -56,12 +56,15 @@ svg.wires{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-eve
 .esc .d b{font-size:34px;line-height:1}
 .esc .d span{color:var(--ink2)}
 .esc .pct{font-size:13px;color:var(--ink2)}
-.bono{border-radius:10px;padding:8px 12px;display:flex;align-items:center;gap:10px;height:62px}
+.bono{border-radius:10px;padding:8px 12px;display:flex;align-items:center;gap:10px;height:70px}
 .bono .ic{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;flex:0 0 32px}
 .bono .ic img{width:18px;height:18px}
 .bono b{display:block;font-size:15px}
 .bono span{font-size:13.5px;color:var(--ink2)}
-.bono span b{display:inline;font-size:13.5px;color:var(--ink)}
+.bono span{display:block;line-height:1.25}
+.bono span b{display:inline;font-size:14px;color:var(--ink)}
+.bono .hh{font-size:12.5px}
+.bono .hh b{font-size:12.5px;font-weight:600;color:var(--ink2)}
 .bono.p{grid-column:3;grid-row:1;background:var(--green-f);align-self:center}
 .bono.p .ic{background:var(--green)}
 .bono.r{grid-column:3;grid-row:2/5;background:var(--blue-f);align-self:center}
@@ -136,6 +139,7 @@ svg.wires{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-eve
 .tt tr.sel td{background:#efeafb}
 .tt td .go2{color:#7d6bbf;font-weight:700;margin-left:6px}
 .tt tr.tot td{background:#f2f5f9;font-weight:700;border-top:2px solid #2E3A4B;position:sticky;bottom:0}
+.hh2{font-size:11.5px;color:var(--ink2);font-weight:400;line-height:1.1}
 .barc{display:flex;align-items:center;gap:6px;justify-content:flex-end}
 .barc i{display:block;height:8px;border-radius:2px;background:#b3a3d9}
 .det h3{margin:0;font-size:18px;color:var(--ink)}
@@ -166,7 +170,7 @@ svg.wires{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-eve
   <div class="view on" id="view1">
   <div class="hint" style="font-size:13px;color:var(--ink2);margin:2px 0 0">Elija el escenario (1 a 4) en el recuadro morado, ajuste el puntaje con − / + y edite los montos subrayados: todo se recalcula al instante.</div>
   <div class="scroll"><div class="diagram" id="diagram">
-    <svg class="wires" id="wires"><defs><marker id="ah" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5B7089"/></marker></defs><g id="w"></g></svg>
+    <svg class="wires" id="wires" preserveAspectRatio="none"><defs><marker id="ah" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5B7089"/></marker></defs><g id="w"></g></svg>
     <div class="grid">
       <div class="esc" id="esc">
         <div class="top"><span class="num" id="escNum">1</span><span class="ttl" id="escTtl">Escenario 1</span></div>
@@ -176,8 +180,8 @@ svg.wires{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-eve
         <div class="pct" id="pct">91% de 1 411 declarados</div>
       </div>
 
-      <div class="bono p" id="bP"><span class="ic"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAFbklEQVR4XtWbWchVVRTH18rKsqI5KrMyDJooyubBMIIKEiPoOYPqIbJoAoOK6MGCwl56KIMGegmRMgwyHxrVrAw0e5AI55IcSsshTf3FOuxr537fOWfvfabvnh98T/d++6z1v2uvvfY+a4u0DHAO8CywEtjr/n4CngfOa9mcdgAUuB54A9hEPpuBt4BJwGHtWNcgwEnAvcDnwP4Cx4dyEPgauB84pUETmwG4GJgJrIlwOo/1wMvAZc1YWxPAUcCdwAfAzhocH8puYD4wFTimJrOrA4wDngCWN+B0HpY0Z1hCre5BCVxSuwF4E5LENVJsA94Bbi6bNDXGf0tqIjJFRKaJyE0iMirm/xsEEVksIu+KyDxV3Vrrs1JJbW3NP7X9gtOBzyJXiSLW1ZI0W0hqxhZLaA1NqXTSHBMcEcBxwKMtJTUToG+dd0n1SWBFjdFmVedj5luhEMB4YEmND/YxTIAewNHAFGAesMs3UCDf5Jbb7pdfGjhQXeQKkMbloJeglhz0bWYkuLBvmyABUlFhpfU04AvgQAVjHxmq8ChgcYUByxIlQEoI21zd6OoQGyMW8zVZwns7LksO44MzZX1E1SE9VBVVXaSqD4jIRBF5SkRWRJh1rkji8yEBTI3DIwYYGFR1vaq+IiLXuSLtIxHZ5THwiF4R14uAgyJyYGC8KoGq7lHVj1X1LhG5TUR2FgyzXyTx+ZAA5vy+Es8dVFb3HMzBBEh+8F4E/CsiewbVmxIcL5KEeR67RRKf+wTwzZsuYQludIHB5msS8UkEqKqFxPYueejBdq1FZ4o7VLVvChibfaN2iDM9tv7e+zyt0oYOOejD1vkiNmUJsM43aoeY4LF1bZYAv3TIwVxciXu+xxdbJhPSU2DNCC2FpcrhAux8oais3yuSLcCvIv/PjQ5jv/7JBfZbAtw4LAJU1dbGVR12vMc1trIX+PGziPw9TADH9wX/2BUmeQxdZrvJPAGWdMXLLAAL/as8PixNfz60WlouIls6LMK1InJGgf1W7S7LFUBVrRrs+0LHmOqx1w5NfssVwLGgY04nACeIyO0e2xek57+RtWFYOEL1QFXsEGRcwSC2/f106OdZAtgy8V1Va9rE3iyJyH2eZ1p+W+kVQFXtqGhOmw7UwOUiMtkzzly37e8jKwIMO1jcVoNhbTFdRI4seJgVPnOzPs8UQFWtLJ7flvVVAC4SkXsCkt+hDVCavAgwZoskh4eDzgwRKWqZsSn9erQT1nEBLIx95RLJVuDUaOMckHSpWK9hEYuA3HceuRHgkuEsW2LLGtgkgM35mZ65b8zKSn5B2OGC695oitIR4DpLfNg7wKLk6Ae4pcb2laGUEsC9Lv/D4701W97h99CDa1+Z45O6JNECAGOArwKe96ErkKoDXABsD3hoLGUEeDXgIX8Bl1T3PAXwdMCDY4kSAHgQktD28Uytzhsu9OruHwoWwLXhWueXD+sDCu8KiwGYCEl41YUJcJrPBmAyeJOesQO4wjdeJQKXn1C8ArhVKLQN5qFKzoXgKsT3Qj30UCgAcDfwp28Qh120qPsdQzbAiZC0m1UlVwDX2PhP4ANsWSxugqwbYEINFyKGCWAnu8DbgY4bq4Cz6/YvCODqiu3yfQIAtwI/Rji/Ebg0yNimiMjQWZgAxwJjgdeAfRHO2+Urews08kRm6jSW4F4ENkQ4btj37R3A4OD25nbBqWlszg/mBSrgQuCHBhWwHuGRuScUivX/A+83IMLs1pe6sriDlMdrKpstUVpPcPcArgS+rBANn9S+rW0bYDTwMEQlyNXu2mwnG7gzAU4HXvAsebaKPBeyQ+wswFnu+rzd/rQjbav37VKTXakf27Zj/wGxUFRy0cXYggAAAABJRU5ErkJggg==" alt=""></span><div><b>Bono preventivo</b><span><b id="hP">1 312 650</b> hogares</span></div></div>
-      <div class="bono r" id="bR"><span class="ic"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADqElEQVR4XuWbzcuWRRSHfyfF1NSUsl4pMFuJ4k6jdOGqjbuIWir4F0TrEKSNgiIIhh8rRV0EYq38QiJ8aVltQlemiB+UH6jlV+kl83AHia/Pc8+Z+9zN+3atnzkz5zdn5syceW6pEGAOsAe4TXfcaWy+Uji8eIBt3fn9HFujPbCSDoB5kn6R9HaJnSFclrTMzO4E2ddLhYbflPRaoY1hPAm0PaBUgEWSZgUO8ofI2e9CgMWBzieOBtsvjoAlgQP8XdJ3gfY7iYBIAb43s99qF+CdwAGGh3/RHgCkzS9tghHc6CP8iwSQNF/SGxHeSzpjZleDbD9DSRockzQ3aJC9hH9pBKTT3/QAAW5JOh1gd0JKIiAqA4ybWToC90KNAnzTi+cNtQlwW9Kp6gUApgXdANPZ/1L1AjS7f8oCXdNr+JdkgYWSFnTsfQr/Yx3bHIk3jaUT4OyR1vP4WdJ94PW8ZgMemtldRzu3ABHX4FWSznqckPQHkJbPF2b2Z44NbwREnAFSRHmjKkXNZ5KQ9HmOAN40GCFAF3zS1Clb4xUg8hpcSoqC1mQLEHwNLuVo7maYLUDwNbiEa5Ky3xE8AkReg0vY4rlEeQSIugaX8JOkfR4DHgFqywDp8STl/3v/VwHSAch9hJ7sEZCOv5vMLCv1/ZssAQKvwV6+MrP0OOsmS4DAa7CHC5K2eRq6I0DSYyn+xbYlX5rZ9Za/fSFZEdCcsr4u7bQDxiUd7MCO6za4qen4Y0lznINIJTVvQeWvJu09cvb9DO5/iADpUeRl5yA+lHTY2faAmW1wtn0Obz3gn+XgqsIAS50O3JS02dl2QrL2gC4AUtStcdraYWbnnW3rINX8gGuOf5adzS12VAmwFnjiEODTCId6XwKS3peyN9+Tko5ECNA7wLeZs59K5aliPPlJaxi4mCnArsnveQOwEvg7Q4CrwFuRAvS9B7wnDU6BbXGVuaoFOJQx+z8C3oeS+gBmwiCXt+ExsK4+LwoAlgEP2ngPHGlOjFMHYH1L59PHEsv78rzPTXB1S6eKy1zVAUyHwaY2il+d/w+oG2AJcHeU98DGuj1xAnzUwvkzwAxnF2762gNGrf9Oy1xVkdIZDGZ3GPurGnSXAGPA9SHe3wDe7bLPHPpYAitGfFn2n5a5+hDggyEzck7SzpwZm1Q06//4kPAPKXNVA/AqcOkFApxoHlunLo0AVyYQYOqUuUYBbJ9AgO2j2k0Zms/r9zZH4XTT2w31fBb/FDfsampN9tJFAAAAAElFTkSuQmCC" alt=""></span><div><b>Bono reactivo</b><span><b id="hR">1 312 650</b> hogares</span></div></div>
+      <div class="bono p" id="bP"><span class="ic"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAFbklEQVR4XtWbWchVVRTH18rKsqI5KrMyDJooyubBMIIKEiPoOYPqIbJoAoOK6MGCwl56KIMGegmRMgwyHxrVrAw0e5AI55IcSsshTf3FOuxr537fOWfvfabvnh98T/d++6z1v2uvvfY+a4u0DHAO8CywEtjr/n4CngfOa9mcdgAUuB54A9hEPpuBt4BJwGHtWNcgwEnAvcDnwP4Cx4dyEPgauB84pUETmwG4GJgJrIlwOo/1wMvAZc1YWxPAUcCdwAfAzhocH8puYD4wFTimJrOrA4wDngCWN+B0HpY0Z1hCre5BCVxSuwF4E5LENVJsA94Bbi6bNDXGf0tqIjJFRKaJyE0iMirm/xsEEVksIu+KyDxV3Vrrs1JJbW3NP7X9gtOBzyJXiSLW1ZI0W0hqxhZLaA1NqXTSHBMcEcBxwKMtJTUToG+dd0n1SWBFjdFmVedj5luhEMB4YEmND/YxTIAewNHAFGAesMs3UCDf5Jbb7pdfGjhQXeQKkMbloJeglhz0bWYkuLBvmyABUlFhpfU04AvgQAVjHxmq8ChgcYUByxIlQEoI21zd6OoQGyMW8zVZwns7LksO44MzZX1E1SE9VBVVXaSqD4jIRBF5SkRWRJh1rkji8yEBTI3DIwYYGFR1vaq+IiLXuSLtIxHZ5THwiF4R14uAgyJyYGC8KoGq7lHVj1X1LhG5TUR2FgyzXyTx+ZAA5vy+Es8dVFb3HMzBBEh+8F4E/CsiewbVmxIcL5KEeR67RRKf+wTwzZsuYQludIHB5msS8UkEqKqFxPYueejBdq1FZ4o7VLVvChibfaN2iDM9tv7e+zyt0oYOOejD1vkiNmUJsM43aoeY4LF1bZYAv3TIwVxciXu+xxdbJhPSU2DNCC2FpcrhAux8oais3yuSLcCvIv/PjQ5jv/7JBfZbAtw4LAJU1dbGVR12vMc1trIX+PGziPw9TADH9wX/2BUmeQxdZrvJPAGWdMXLLAAL/as8PixNfz60WlouIls6LMK1InJGgf1W7S7LFUBVrRrs+0LHmOqx1w5NfssVwLGgY04nACeIyO0e2xek57+RtWFYOEL1QFXsEGRcwSC2/f106OdZAtgy8V1Va9rE3iyJyH2eZ1p+W+kVQFXtqGhOmw7UwOUiMtkzzly37e8jKwIMO1jcVoNhbTFdRI4seJgVPnOzPs8UQFWtLJ7flvVVAC4SkXsCkt+hDVCavAgwZoskh4eDzgwRKWqZsSn9erQT1nEBLIx95RLJVuDUaOMckHSpWK9hEYuA3HceuRHgkuEsW2LLGtgkgM35mZ65b8zKSn5B2OGC695oitIR4DpLfNg7wKLk6Ae4pcb2laGUEsC9Lv/D4701W97h99CDa1+Z45O6JNECAGOArwKe96ErkKoDXABsD3hoLGUEeDXgIX8Bl1T3PAXwdMCDY4kSAHgQktD28Uytzhsu9OruHwoWwLXhWueXD+sDCu8KiwGYCEl41YUJcJrPBmAyeJOesQO4wjdeJQKXn1C8ArhVKLQN5qFKzoXgKsT3Qj30UCgAcDfwp28Qh120qPsdQzbAiZC0m1UlVwDX2PhP4ANsWSxugqwbYEINFyKGCWAnu8DbgY4bq4Cz6/YvCODqiu3yfQIAtwI/Rji/Ebg0yNimiMjQWZgAxwJjgdeAfRHO2+Urews08kRm6jSW4F4ENkQ4btj37R3A4OD25nbBqWlszg/mBSrgQuCHBhWwHuGRuScUivX/A+83IMLs1pe6sriDlMdrKpstUVpPcPcArgS+rBANn9S+rW0bYDTwMEQlyNXu2mwnG7gzAU4HXvAsebaKPBeyQ+wswFnu+rzd/rQjbav37VKTXakf27Zj/wGxUFRy0cXYggAAAABJRU5ErkJggg==" alt=""></span><div><b>Bono preventivo</b><span><b id="nP">5 250 600</b> personas</span><span class="hh">(<b id="hP">1 312 650</b> hogares)</span></div></div>
+      <div class="bono r" id="bR"><span class="ic"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADqElEQVR4XuWbzcuWRRSHfyfF1NSUsl4pMFuJ4k6jdOGqjbuIWir4F0TrEKSNgiIIhh8rRV0EYq38QiJ8aVltQlemiB+UH6jlV+kl83AHia/Pc8+Z+9zN+3atnzkz5zdn5syceW6pEGAOsAe4TXfcaWy+Uji8eIBt3fn9HFujPbCSDoB5kn6R9HaJnSFclrTMzO4E2ddLhYbflPRaoY1hPAm0PaBUgEWSZgUO8ofI2e9CgMWBzieOBtsvjoAlgQP8XdJ3gfY7iYBIAb43s99qF+CdwAGGh3/RHgCkzS9tghHc6CP8iwSQNF/SGxHeSzpjZleDbD9DSRockzQ3aJC9hH9pBKTT3/QAAW5JOh1gd0JKIiAqA4ybWToC90KNAnzTi+cNtQlwW9Kp6gUApgXdANPZ/1L1AjS7f8oCXdNr+JdkgYWSFnTsfQr/Yx3bHIk3jaUT4OyR1vP4WdJ94PW8ZgMemtldRzu3ABHX4FWSznqckPQHkJbPF2b2Z44NbwREnAFSRHmjKkXNZ5KQ9HmOAN40GCFAF3zS1Clb4xUg8hpcSoqC1mQLEHwNLuVo7maYLUDwNbiEa5Ky3xE8AkReg0vY4rlEeQSIugaX8JOkfR4DHgFqywDp8STl/3v/VwHSAch9hJ7sEZCOv5vMLCv1/ZssAQKvwV6+MrP0OOsmS4DAa7CHC5K2eRq6I0DSYyn+xbYlX5rZ9Za/fSFZEdCcsr4u7bQDxiUd7MCO6za4qen4Y0lznINIJTVvQeWvJu09cvb9DO5/iADpUeRl5yA+lHTY2faAmW1wtn0Obz3gn+XgqsIAS50O3JS02dl2QrL2gC4AUtStcdraYWbnnW3rINX8gGuOf5adzS12VAmwFnjiEODTCId6XwKS3peyN9+Tko5ECNA7wLeZs59K5aliPPlJaxi4mCnArsnveQOwEvg7Q4CrwFuRAvS9B7wnDU6BbXGVuaoFOJQx+z8C3oeS+gBmwiCXt+ExsK4+LwoAlgEP2ngPHGlOjFMHYH1L59PHEsv78rzPTXB1S6eKy1zVAUyHwaY2il+d/w+oG2AJcHeU98DGuj1xAnzUwvkzwAxnF2762gNGrf9Oy1xVkdIZDGZ3GPurGnSXAGPA9SHe3wDe7bLPHPpYAitGfFn2n5a5+hDggyEzck7SzpwZm1Q06//4kPAPKXNVA/AqcOkFApxoHlunLo0AVyYQYOqUuUYBbJ9AgO2j2k0Zms/r9zZH4XTT2w31fBb/FDfsampN9tJFAAAAAElFTkSuQmCC" alt=""></span><div><b>Bono reactivo</b><span><b id="nR">5 250 600</b> personas</span><span class="hh">(<b id="hR">1 312 650</b> hogares)</span></div></div>
 
       <div class="pago p" id="pP"><b>1.er pago</b>S/ <input id="vP" type="number" min="0" step="10"> por persona</div>
       <div class="pago" id="p1" style="grid-row:2"><b>1.er pago</b>S/ <input id="v1" type="number" min="0" step="10"> por persona</div>
@@ -247,18 +251,18 @@ function render(){
   const R = calc();
   $("dist").textContent = sp(R.dist);
   $("pct").textContent = Math.round(R.dist/TOTAL_DIST*100) + "% de " + sp(TOTAL_DIST) + " declarados";
-  $("hP").textContent = sp(R.hog); $("hR").textContent = sp(R.hog);
+  $("hP").textContent = sp(R.hog); $("hR").textContent = sp(R.hog); $("nP").textContent = sp(R.per); $("nR").textContent = sp(R.per);
   $("cPv").textContent = mm(R.cP); $("cRv").textContent = mm(R.cR);
   $("prob").textContent = "Prob. " + f1(R.prob*100) + "%";
   $("eRv").textContent = mm(R.eR); $("fisv").textContent = mm(R.fis);
   const t=$("tope"); if (S.tope>0){ const ok=R.fis<=S.tope; t.className="tope "+(ok?"ok":"no"); t.textContent = ok? "✔ Dentro del tope (S/ "+sp(S.tope)+" MM)" : "▲ Supera el tope en "+mm(R.fis-S.tope); t.style.display="inline-block"; } else t.style.display="none";
-  const hf = S.hh, mr=S.m[0]+S.m[1]+S.m[2];
-  $("foot").innerHTML = `MM = millones de soles. Costo total = hogares × monto por hogar (S/ ${sp(S.prev*hf)} el preventivo y S/ ${sp(mr*hf)} el reactivo, con ${hf} personas por hogar). Costo esperado del reactivo = costo reactivo × probabilidad de afectación. Costo fiscal = costo total del preventivo + costo esperado del reactivo. Distritos: 1 411 declarados en emergencia según DS N.º 124-2026-PCM y N.º 140-2026-PCM.`;
+  const mr=S.m[0]+S.m[1]+S.m[2];
+  $("foot").innerHTML = `MM = millones de soles. Costo total = N.º de personas × monto por persona (S/ ${sp(S.prev)} el preventivo y S/ ${sp(mr)} el reactivo). Costo esperado del reactivo = costo reactivo × probabilidad de afectación. Costo fiscal = costo total del preventivo + costo esperado del reactivo. Distritos: 1 411 declarados en emergencia según DS N.º 124-2026-PCM y N.º 140-2026-PCM.`;
   wires(); if (VIEW===2) render2();
 }
 
 /* ---- connectors (same layout as the slide) ---- */
-function box(id){ const d=$("diagram").getBoundingClientRect(), r=$(id).getBoundingClientRect(); return {l:r.left-d.left, r:r.right-d.left, t:r.top-d.top, b:r.bottom-d.top, cx:(r.left+r.right)/2-d.left, cy:(r.top+r.bottom)/2-d.top}; }
+function box(id){ const dg=$("diagram"), d=dg.getBoundingClientRect(), r=$(id).getBoundingClientRect(), k=(d.width/dg.offsetWidth)||1; const L=(r.left-d.left)/k, T=(r.top-d.top)/k, W=r.width/k, H=r.height/k; return {l:L, r:L+W, t:T, b:T+H, cx:L+W/2, cy:T+H/2}; }
 function wires(){
   const g=$("w"); let s="";
   const P=(pts,arrow=true)=>{ s+=`<polyline points="${pts.map(p=>p.join(",")).join(" ")}" fill="none" stroke="#5B7089" stroke-width="1.6" ${arrow?'marker-end="url(#ah)"':''}/>`; };
@@ -322,7 +326,7 @@ function render2(){
   const scope = all.filter(x => (!PATH[0]||x.d===PATH[0]) && (!PATH[1]||x.pv===PATH[1]));
   const A = agg(scope), N = agg(all);
   const where = PATH.length? title(PATH[PATH.length-1]) : "Perú";
-  $("kp").innerHTML = `<div><small>Distritos · ${where}</small><b>${sp(A.dist)}</b></div><div class="g"><small>Hogares (preventivo)</small><b>${sp(A.hog)}</b></div><div class="o"><small>Costo preventivo</small><b>${mm(A.cP)}</b></div><div class="t"><small>Probabilidad de afectación</small><b>${f1(A.prob*100)}%</b></div><div class="o"><small>Costo esperado del reactivo</small><b>${mm(A.eR)}</b></div><div class="f"><small>Costo fiscal${PATH.length?" · "+f1(N.fis?A.fis/N.fis*100:0)+"% del total":""}</small><b>${mm(A.fis)}</b></div>`;
+  $("kp").innerHTML = `<div><small>Distritos · ${where}</small><b>${sp(A.dist)}</b></div><div class="g"><small>Personas (hogares)</small><b>${sp(A.per)}</b> <span style="font-size:13px;color:var(--ink2)">(${sp(A.hog)})</span></div><div class="o"><small>Costo preventivo</small><b>${mm(A.cP)}</b></div><div class="t"><small>Probabilidad de afectación</small><b>${f1(A.prob*100)}%</b></div><div class="o"><small>Costo esperado del reactivo</small><b>${mm(A.eR)}</b></div><div class="f"><small>Costo fiscal${PATH.length?" · "+f1(N.fis?A.fis/N.fis*100:0)+"% del total":""}</small><b>${mm(A.fis)}</b></div>`;
   // crumb
   let c = `<a data-l="0">Perú</a>`; PATH.forEach((p,i)=> c += `<span class="sep">›</span>` + (i===PATH.length-1? `<b>${title(p)}</b>` : `<a data-l="${i+1}">${title(p)}</a>`));
   $("crumb").innerHTML = c; [...$("crumb").querySelectorAll("a")].forEach(a=>a.onclick=()=>{PATH=PATH.slice(0,+a.dataset.l);SEL=null;render2();});
@@ -334,14 +338,14 @@ function render2(){
   let rows = Object.entries(groups).map(([k,v])=>({k, rows:v, ...agg(v)}));
   rows.sort((a,b)=> SORT.k==="k" ? SORT.d*a.k.localeCompare(b.k) : SORT.d*(a[SORT.k]-b[SORT.k]));
   const maxF = Math.max(...rows.map(r=>r.fis),1);
-  const H = [["k",lname],["dist",lvl===2?"Puntaje":"Distritos"],["hog","Hogares"],["cP","Preventivo (MM)"],["prob","Prob."],["eR","Reactivo esp. (MM)"],["fis","Costo fiscal (MM)"]];
+  const H = [["k",lname],["dist",lvl===2?"Puntaje":"Distritos"],["per","Personas (hogares)"],["cP","Preventivo (MM)"],["prob","Prob."],["eR","Reactivo esp. (MM)"],["fis","Costo fiscal (MM)"]];
   const arrow = k => SORT.k===k ? (SORT.d<0?" ▼":" ▲") : "";
   let h = `<tr>${H.map(([k,l])=>`<th data-k="${k}">${l}${arrow(k)}</th>`).join("")}</tr>`;
   rows.forEach(r=>{
     const isD = lvl===2, x = r.rows[0];
-    h += `<tr class="row ${SEL===r.k?"sel":""}" data-k="${r.k.replace(/"/g,'&quot;')}"><td>${title(r.k)}${!isD?'<span class="go2">›</span>':''}</td><td>${isD? "Puntaje "+x.s : sp(r.dist)}</td><td>${sp(r.hog)}</td><td>${f1(r.cP)}</td><td>${f1(r.prob*100)}%</td><td>${f1(r.eR)}</td><td><div class="barc"><i style="width:${Math.max(2,r.fis/maxF*80)}px"></i><b>${f1(r.fis)}</b></div></td></tr>`;
+    h += `<tr class="row ${SEL===r.k?"sel":""}" data-k="${r.k.replace(/"/g,'&quot;')}"><td>${title(r.k)}${!isD?'<span class="go2">›</span>':''}</td><td>${isD? "Puntaje "+x.s : sp(r.dist)}</td><td>${sp(r.per)}<div class="hh2">(${sp(r.hog)})</div></td><td>${f1(r.cP)}</td><td>${f1(r.prob*100)}%</td><td>${f1(r.eR)}</td><td><div class="barc"><i style="width:${Math.max(2,r.fis/maxF*80)}px"></i><b>${f1(r.fis)}</b></div></td></tr>`;
   });
-  h += `<tr class="tot"><td>Total ${lvl? title(PATH[lvl-1]) : "Perú"}</td><td>${sp(A.dist)}</td><td>${sp(A.hog)}</td><td>${f1(A.cP)}</td><td>${f1(A.prob*100)}%</td><td>${f1(A.eR)}</td><td>${f1(A.fis)}</td></tr>`;
+  h += `<tr class="tot"><td>Total ${lvl? title(PATH[lvl-1]) : "Perú"}</td><td>${sp(A.dist)}</td><td>${sp(A.per)}<div class="hh2">(${sp(A.hog)})</div></td><td>${f1(A.cP)}</td><td>${f1(A.prob*100)}%</td><td>${f1(A.eR)}</td><td>${f1(A.fis)}</td></tr>`;
   $("tt").innerHTML = h;
   [...$("tt").querySelectorAll("th")].forEach(th=>th.onclick=()=>{const k=th.dataset.k; if(SORT.k===k) SORT.d*=-1; else SORT={k,d:k==="k"?1:-1}; render2();});
   [...$("tt").querySelectorAll("tr.row")].forEach(tr=>tr.onclick=()=>{ const k=tr.dataset.k; if(lvl<2){PATH=[...PATH,k];SEL=null;} else SEL=k; render2(); });
